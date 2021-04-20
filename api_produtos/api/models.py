@@ -13,5 +13,9 @@ class Tbl_Inventarios(models.Model):
     produto = models.ForeignKey(Tbl_Produtos, on_delete= models.CASCADE)
     cliente_id = models.IntegerField()
 
+    @property
+    def cliente(self):
+        return "http://localhost:8000/clientes_api/" + str(self.cliente_id) + "/"
+
     def __str__(self):
         return self.produto + ' de '+ cliente_id

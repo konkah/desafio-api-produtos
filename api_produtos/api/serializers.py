@@ -9,4 +9,4 @@ class Tbl_ProdutosSerializer(serializers.HyperlinkedModelSerializer):
 class Tbl_InventariosSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Tbl_Inventarios
-        fields = '__all__'
+        fields = ['url', 'produto', 'cliente']
