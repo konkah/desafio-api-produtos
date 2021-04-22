@@ -10,3 +10,4 @@ class Tbl_InventariosSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Tbl_Inventarios
         fields = ['url', 'produto', 'cliente']
+        depth = 1
