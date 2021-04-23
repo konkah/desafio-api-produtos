@@ -10,13 +10,18 @@ class Tbl_Produtos(models.Model):
         return self.nome_produto
 
 class Tbl_Inventarios(models.Model):
-    produto = models.ForeignKey(Tbl_Produtos, on_delete= models.CASCADE)
     cliente_id = models.IntegerField()
+    produto_id = models.IntegerField()
 
     @property
     def cliente(self):
         url_cliente = "http://172.19.240.1:8000/clientes_api/" + str(self.cliente_id) + "/"
         return requests.get(url_cliente, auth=('admin','admin')).json()
 
+    @property
+    def produto(self):
+        url_produto = "http://localhost:8001/produtos_api/" + str(self.produto_id) + "/"
+        return requests.get(url_produto, auth=('admin','admin')).json()
+ 
     def __str__(self):
-        return self.produto + ' de '+ cliente_id
+        return self.produto() + ' de '+ self.cliente()
