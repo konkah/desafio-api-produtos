@@ -75,13 +75,18 @@ WSGI_APPLICATION = 'api_produtos.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+resolv_conf = open("/etc/resolv.conf")
+for line in resolv_conf:
+    if line.startswith("nameserver"):
+        wsl2_host_ip = line[11:-1] 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'api_produtos',
         'USER': 'root',
         'PASSWORD': 'PassworD',
-        'HOST': '172.19.240.1',
+        'HOST': wsl2_host_ip,
         'PORT': '3306',
     }
 }

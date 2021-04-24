@@ -18,3 +18,10 @@ class Tbl_InventariosSerializer(serializers.HyperlinkedModelSerializer):
             'cliente',
         ]
         depth = 1
+
+    def validate_produto_id(produto_id):
+        produto = Tbl_Produtos.objects.get(pk = produto_id)
+        if not produto.disponivel_produto:
+            raise serializers.ValidationError(
+                'Produto não disponível para compra.'
+            )

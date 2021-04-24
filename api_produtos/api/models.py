@@ -1,5 +1,6 @@
 from django.db import models
 import requests
+from api_produtos.settings import wsl2_host_ip
 
 class Tbl_Produtos(models.Model):
     nome_produto = models.CharField(max_length=200)
@@ -15,7 +16,7 @@ class Tbl_Inventarios(models.Model):
 
     @property
     def cliente(self):
-        url_cliente = "http://172.19.240.1:8000/clientes_api/" + str(self.cliente_id) + "/"
+        url_cliente = "http://"+wsl2_host_ip+":8000/clientes_api/" + str(self.cliente_id) + "/"
         return requests.get(url_cliente, auth=('admin','admin')).json()
 
     @property
