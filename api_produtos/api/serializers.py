@@ -14,14 +14,17 @@ class Tbl_InventariosSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Tbl_Inventarios
         fields = [
-            'produto', 
+            'produto',
+            'produto_id', 
             'cliente',
+            'cliente_id',
         ]
         depth = 1
 
-    def validate_produto_id(produto_id):
+    def validate_produto_id(self, produto_id):
         produto = Tbl_Produtos.objects.get(pk = produto_id)
         if not produto.disponivel_produto:
             raise serializers.ValidationError(
                 'Produto não disponível para compra.'
             )
+        return produto_id
