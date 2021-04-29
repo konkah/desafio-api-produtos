@@ -10,6 +10,12 @@ class Tbl_ProdutosViewSet(viewsets.ModelViewSet):
     queryset = Tbl_Produtos.objects.all()
     serializer_class = Tbl_ProdutosSerializer
 
+    def destroy(self,request,pk=None):
+        produto = Tbl_Produtos.objects.get(pk = pk)
+        produto.deletado = True
+        produto.save()
+        return Response({})
+
 class Tbl_InventariosViewSet(viewsets.ModelViewSet):
     queryset = Tbl_Inventarios.objects.all()
     serializer_class = Tbl_InventariosSerializer
@@ -19,3 +25,9 @@ class Tbl_InventariosViewSet(viewsets.ModelViewSet):
         inventarios_list = Tbl_Inventarios.objects.filter(cliente_id=cli_id)
         inventarios_list_serialized = self.get_serializer(inventarios_list, many=True)
         return Response(inventarios_list_serialized.data)
+    
+    def destroy(self,request,pk=None):
+        inventario = Tbl_Inventarios.objects.get(pk = pk)
+        inventario.deletado = True
+        inventario.save()
+        return Response({})
