@@ -14,7 +14,7 @@ class Tbl_ProdutosViewSet(viewsets.ModelViewSet):
         produto = Tbl_Produtos.objects.get(pk = pk)
         produto.deletado = True
         produto.save()
-        return Response({})
+        return Response({"detail":"Produto deletado com sucesso!"})
 
 class Tbl_InventariosViewSet(viewsets.ModelViewSet):
     queryset = Tbl_Inventarios.objects.all()
@@ -30,4 +30,4 @@ class Tbl_InventariosViewSet(viewsets.ModelViewSet):
         inventario = Tbl_Inventarios.objects.get(pk = pk)
         inventario.deletado = True
         inventario.save()
-        return Response({})
+        return Response({"detail":"Inventário deletado com sucesso!"})
