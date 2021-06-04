@@ -18,7 +18,7 @@ class Tbl_Inventarios(models.Model):
     
     @property
     def cliente(self):
-        url_cliente = "http://"+cliente_api+"/clientes_api/" + str(self.cliente_id) + "/"
+        url_cliente = "http://"+clientes_api+"/clientes_api/" + str(self.cliente_id) + "/"
         return requests.get(url_cliente, auth=('admin','admin')).json()
 
     @property
