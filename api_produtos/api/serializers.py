@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Tbl_Produtos, Tbl_Inventarios
 import requests
-from api_produtos.settings import wsl2_host_ip
+from api_produtos.settings import CLIENTES_API
 
 class Tbl_ProdutosSerializer(serializers.ModelSerializer):
     class Meta:
@@ -28,7 +28,7 @@ class Tbl_InventariosSerializer(serializers.ModelSerializer):
         depth = 1
 
     def validate_cliente_id(self, cliente_id):
-        url_cliente = "http://"+clientes_api+"/clientes_api/" + str(cliente_id) + "/"
+        url_cliente = "http://"+CLIENTES_API+"/clientes_api/" + str(cliente_id) + "/"
         cliente = requests.get(url_cliente, auth=('admin','admin')).status_code
         if cliente >= 500:
             raise serializers.ValidationError(

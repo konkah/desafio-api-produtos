@@ -1,3 +1,7 @@
+CLIENTES_API = "localhost"
+CLIENTES_RDS = "localhost"
+PRODUTOS_RDS = "localhost"
+
 """
 Django settings for api_produtos project.
 
@@ -75,17 +79,13 @@ WSGI_APPLICATION = 'api_produtos.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-import os
-rds_name = os.environ.get('PRODUTOS_RDS')
-clientes_api = os.environ.get('CLIENTES_API')
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'aws_rds_produtos',
         'USER': 'user',
         'PASSWORD': 'PassworD',
-        'HOST': rds_dns,
+        'HOST': PRODUTOS_RDS,
         'PORT': '3306',
     }
 }
