@@ -28,7 +28,7 @@ class Tbl_InventariosSerializer(serializers.ModelSerializer):
         depth = 1
 
     def validate_cliente_id(self, cliente_id):
-        url_cliente = "http://"+wsl2_host_ip+":8000/clientes_api/" + str(cliente_id) + "/"
+        url_cliente = "http://"+clientes_api+"/clientes_api/" + str(cliente_id) + "/"
         cliente = requests.get(url_cliente, auth=('admin','admin')).status_code
         if cliente >= 500:
             raise serializers.ValidationError(

@@ -18,12 +18,12 @@ class Tbl_Inventarios(models.Model):
     
     @property
     def cliente(self):
-        url_cliente = "http://"+wsl2_host_ip+":8000/clientes_api/" + str(self.cliente_id) + "/"
+        url_cliente = "http://"+cliente_api+"/clientes_api/" + str(self.cliente_id) + "/"
         return requests.get(url_cliente, auth=('admin','admin')).json()
 
     @property
     def produto(self):
-        url_produto = "http://localhost:8001/produtos_api/" + str(self.produto_id) + "/"
+        url_produto = "http://localhost/produtos_api/" + str(self.produto_id) + "/"
         return requests.get(url_produto, auth=('admin','admin')).json()
  
     def __str__(self):
