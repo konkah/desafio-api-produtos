@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Tbl_Produtos, Tbl_Inventarios
 import requests
-from api_produtos.settings import CLIENTES_API
+from api_produtos.address import CLIENTES_API
 
 class Tbl_ProdutosSerializer(serializers.ModelSerializer):
     class Meta:

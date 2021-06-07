@@ -1,7 +1,3 @@
-CLIENTES_API = "localhost"
-CLIENTES_RDS = "localhost"
-PRODUTOS_RDS = "localhost"
-
 """
 Django settings for api_produtos project.
 
@@ -78,6 +74,8 @@ WSGI_APPLICATION = 'api_produtos.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+
+from .address import PRODUTOS_RDS
 
 DATABASES = {
     'default': {

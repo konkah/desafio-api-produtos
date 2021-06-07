@@ -1,6 +1,6 @@
 from django.db import models
 import requests
-from api_produtos.settings import CLIENTES_API
+from api_produtos.address import CLIENTES_API
 
 class Tbl_Produtos(models.Model):
     nome_produto = models.CharField(max_length=200)
